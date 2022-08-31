@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block content %}
+<div class="banner">
+    <div class="left-col">
+      <h2>{SOFTWARE ENGINEER}</h2>
+    </div>
+    <div class="right-col">
+    </div>
+  </div>
+  <div class="left">
+    <h3 id="project">PROJECTS()</h3>
+    <h4>NETFLIX PAGE (Frontend)</h4>
+    <ul>
+      <li>A staic replica of Netflix.com's home page</li>
+      <li>Mimics responsive UX design of Netflix's website.</li>
+      <li>Created entirely using html and css</li>
+    </ul>
+  </div>
+  <div class="right-col">
+    <a href="https://kudzmat.github.io/Netflix/">
+      <img class="grow" src="{{ url_for('static', filename='images/banner1.jpg') }}" alt="Photo by Jamakassi on Unsplash"/>
+    </a>
+  </div>
+  <br>
+  <div class="left">
+    <h4>Welcome to Spotify (Backend)</h4>
+    <ul>
+      <li>A program developed using Python library "Spotipy" to make use of Spotify's web Api</li>
+      <li>Allows user to search for their favourite artists and albums</li>
+      <li>View artist information, album information and top songs on Spotify </li>
+      <li>Allows user to stream straight from Spotify</li>
+    </ul>
+  </div>
+  <div class="right-col">
+    <a href="https://github.com/Kudzmat/Welcome-to-Spotify">
+      <img class="grow" src="./4.png" alt="spotify thumbnail"/>
+    </a>
+  </div>
+  <br>
+  <div class="left">
+    <h4>PROJECTMANSQL (Backend)</h4>
+    <ul>
+      <li>Responsive application built using Java and MySql</li>
+      <li>Uses password protected database to store relevant project information including client details, contractors and deadlines</li>
+      <li>Able to update project information, client, customer and contractor details, generate invoices and much more</li>
+    </ul>
+  </div>
+  <div class="right-col">
+    <a href="https://github.com/Kudzmat/ProjectManSql">
+      <img class="grow" src="./5.png" alt="Project manager thumbnail"/>
+    </a>
+  </div>
+{% endblock %}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>
+        {% block title %}
+        {% endblock %}
+      </title>
+</head>
+  <header>
+    <div class="hero">
+      <div class="navbar">
+      <h1>THE VINYL STORE</h1>
+      </div>
+    </div>
+  </header>
+<body id="background">
+    {% block content %}
+    {% endblock %}
+<footer class="foot border-top">
+    <p>DEVELOPED BY KUDZAYI BAMHARE 2022</p>
+</footer>
+</body>
+</html>

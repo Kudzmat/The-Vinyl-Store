@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Title</title>
+</head>
+  <header>
+    <div class="hero">
+      <div class="navbar">
+      <h1>THE VINYL STORE</h1>
+      </div>
+    </div>
+  </header>
+<body id="background">
+<h1>PLEASE SEARCH FOR AN ALBUM!</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.album.label() }}
+        {{ form.album() }}
+    </p>
+    <p>
+        {{ form.submit() }}
+    </p>
+</form>
+{% if form.album.data %}
+    <br>
+    <h3>Showing album info for {{ artist_name }}</h3>
+    <div class="left">
+        <p>
+            Album Name - {{ album_name }}
+        </p>
+        <p>
+            Artist Name - {{ artist_name }}
+        </p>
+        <p>
+            Release Date - {{ release_date }}
+        </p>
+    </div>
+    <br>
+    <div class="right-col">
+        <img src="{{ album_image }}">
+    </div>
+    {% for song in tracks['items'] %}
+        <ul>
+            <li>{{ song['name'] }}</li>
+            <audio controls>
+                <source src="{{ song['preview_url'] }}" type="audio/mp3">
+            </audio>
+        </ul>
+    {% endfor %}
+{% endif %}
+</body>
+</html>
