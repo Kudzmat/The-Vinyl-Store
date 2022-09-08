@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Artist Display
+{% endblock %}
+
+{% block content %}
+<h1> {{ artist_name }} </h1>
+<h1> FOLLOWERS -  {{ artist_followers }} </h1>
+<h1>GENRES - {{ artist_genres }}</h1>
+<br>
+<br>
+<h1>TOP TRACKS</h1>
+{% for track in top_tracks['tracks'][:10] %}
+    <div class="row">
+        <div class="column-small">
+            <img src=" {{track['album']['images'][2]['url'] }} ">
+            <h2>{{ track['name'] }}</h2>
+            <audio id="player" controls>
+                <source src="{{ track['preview_url'] }}" type="audio/mp3">
+                Your browser does not support the audio tag
+            </audio>
+        </div>
+    </div>
+    <br>
+{% endfor %}
+<br>
+<div>
+    <h1>TOP ALBUMS</h1>
+    <br>
+{% for name,art in album_names.items() %}
+    <div class="row">
+        <div class="column-box">
+                <a href="/display_{{ name }}">
+                    <img class="popular" src=" {{ art }} " alt="album image">
+                    <h2>{{ name }}</h2>
+                </a>
+        </div>
+    </div>
+{% endfor %}
+</div>
+<br>
+{% endblock %}
