@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Artist</title>
-</head>
-<body>
-<h1>PLEASE SEARCH FOR AN ARTIST!</h1>
+{% extends 'base.html' %}
+
+{% block title %}
+    Search Artist
+{% endblock %}
+
+{% block content %}
+<h1 class="heading-text">PLEASE SEARCH FOR AN ARTIST!</h1>
 <form method="POST">
     {{ form.hidden_tag() }}
     <p>
@@ -16,21 +16,4 @@
         {{ form.submit() }}
     </p>
 </form>
-
-{% if form.name.data  %}
-    <h3> {{ artist_name }} </h3>
-    <h4> FOLLOWERS -  {{ artist_followers }} </h4>
-    <h4>GENRES - {{ artist_genres }}</h4>
-    <br>
-    {% for track in top_tracks['tracks'][:5] %}
-        <ul>
-            <img src=" {{track['album']['images'][0]['url'] }} ">
-            <li>{{ track['name'] }}</li>
-    <audio controls>
-        <source src="{{ track['preview_url'] }}" type="audio/mp3">
-    </audio>
-        </ul>
-    {% endfor %}
-{% endif %}
-</body>
-</html>
+{% endblock %}
