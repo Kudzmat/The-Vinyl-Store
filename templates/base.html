@@ -11,15 +11,24 @@
   <header>
     <div class="hero">
       <div class="navbar">
-      <h1>THE VINYL STORE</h1>
+          <a href="{{ url_for('home_page') }}">
+              <h1>THE VINYL STORE</h1>
+          </a>
       </div>
+        <ul class="location" id="main-nav">
+                <li class="location2"><a class="navEffect navEffect2 navEffect3" href="{{ url_for('search_artist') }}">SEARCH ARTIST</a></li>
+                <li class="location2"><a class="navEffect navEffect2 navEffect3" href="{{ url_for('index') }}">SEARCH ALBUM</a></li>
+                <li class="location2"><a class="navEffect navEffect2 navEffect3" href="{{ url_for('home_page') }}">TRY A PLAYLIST</a></li>
+            </ul>
     </div>
   </header>
 <body id="background">
     {% block content %}
     {% endblock %}
-<footer class="foot border-top">
-    <p>DEVELOPED BY KUDZAYI BAMHARE 2022</p>
-</footer>
 </body>
+<div>
+    <footer class="foot border-top">
+        <p>DEVELOPED BY KUDZAYI BAMHARE 2022</p>
+    </footer>
+</div>
 </html>
