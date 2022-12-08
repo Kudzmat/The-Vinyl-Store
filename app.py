@@ -19,4 +19,9 @@ scope = "user-library-read user-top-read playlist-modify-public user-follow-read
 app = Flask(__name__)
 app.secret_key = 'SECRET_KEY'
 
+"""
+if __name__ == '__main__':
+    app.run(debug=True)
+"""
+
 import routes
