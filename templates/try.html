@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block content %}
+<div class="banner">
+    <h1 class="heading-text">Welcome to The Vinyl store, we like to brew some coffee and listen to our favourite tunes</h1>
+</div>
+<br>
+<div class="left">
+    <h2>SEARCH YOUR FAVOURITE ARTIST</h2>
+    <p>
+        Give us the name of an artist and we'll take you to their catalogue of albums and popular records
+    </p>
+    <h2>SEARCH YOUR FAVOURITE ALBUM</h2>
+    <p>
+        Looking for a specific album? Give us a name and we'll point you in the right direction
+    </p>
+    <h2>TRY A PLAYLIST</h2>
+    <p>
+        Give us 5 artists and we will create playlist for you to vibe out to here in the store
+    </p>
+</div>
+<div class="right-col">
+      <img src="{{ url_for('static', filename='images/Vinyl3.JPG') }}" alt="Picture of Kudzayi"/>
+    </div>
+{% endblock %}

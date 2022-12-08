@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block content %}
+<h1>Welcome to The Vinyl store, we like to brew some coffee and listen to our favourite tunes</h1>
+<div class="left">
+  <h2>SEARCH YOUR FAVOURITE ARTIST</h2>
+  <ul>
+    <li>Give us the name of an artist and we'll take you to their catalogue of albums and popular records</li>
+  </ul>
+</div>
+<div class="right-col">
+    <a href="{{ url_for('search_artist') }}">
+      <img id="pic" class="grow" src="{{ url_for('static', filename='images/banner1.jpg') }}" alt="Photo by Jamakassi on Unsplash"/>
+    </a>
+  </div>
+  <br>
+  <div class="left">
+    <h2>SEARCH YOUR FAVOURITE ALBUM</h2>
+    <ul>
+      <li>A program developed using Python library "Spotipy" to make use of Spotify's web Api</li>
+      <li>Allows user to search for their favourite artists and albums</li>
+      <li>View artist information, album information and top songs on Spotify </li>
+      <li>Allows user to stream straight from Spotify</li>
+    </ul>
+  </div>
+  <div class="right-col">
+    <a href="https://github.com/Kudzmat/Welcome-to-Spotify">
+      <img class="grow" src="./4.png" alt="spotify thumbnail"/>
+    </a>
+  </div>
+  <br>
+  <div class="left">
+    <h2>TRY A PLAYLIST</h2>
+    <ul>
+      <li>Give us 5 artists and we will create playlist for you to vibe out to here in the store</li>
+    </ul>
+  </div>
+  <div class="right-col">
+    <a href="https://github.com/Kudzmat/ProjectManSql">
+      <img class="grow" src="./5.png" alt="Project manager thumbnail"/>
+    </a>
+  </div>
+{% endblock %}

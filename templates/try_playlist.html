@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Search Artist
+{% endblock %}
+
+{% block content %}
+<h1 class="heading-text">ENTER 5 ARTISTS YOU LIKE!</h1>
+<h1>PLEASE SEPARATE EACH ARTISTS WITH A COMMA</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.artists.label() }}
+        {{ form.artists() }}
+    </p>
+    <p>
+        {{ form.submit() }}
+    </p>
+</form>
+{% endblock %}
