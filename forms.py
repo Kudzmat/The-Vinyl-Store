@@ -13,3 +13,9 @@ class AlbumSearchForm(FlaskForm):
 class ArtistSearchForm(FlaskForm):
     name = StringField("Enter Artist Name", validators=[DataRequired()])
     submit = SubmitField("Search For This Artist")
+
+
+# playlist request form
+class PlaylistForm(FlaskForm):
+    artists = StringField("Enter Artists", validators=[DataRequired()])
+    submit = SubmitField("Check My Vibe!")
