@@ -5,13 +5,29 @@
 {% endblock %}
 
 {% block content %}
-<h1 class="heading-text">ENTER 5 ARTISTS YOU LIKE!</h1>
-<h1>PLEASE SEPARATE EACH ARTISTS WITH A COMMA</h1>
+<h1 class="heading-text">VIBE CHECK</h1>
+<h1>ENTER 5 ARTISTS YOU LIKE!</h1>
 <form method="POST">
     {{ form.hidden_tag() }}
     <p>
-        {{ form.artists.label() }}
-        {{ form.artists() }}
+        {{ form.artist1.label() }}
+        {{ form.artist1() }}
+    </p>
+     <p>
+        {{ form.artist2.label() }}
+        {{ form.artist2() }}
+    </p>
+     <p>
+        {{ form.artist3.label() }}
+        {{ form.artist3() }}
+    </p>
+     <p>
+        {{ form.artist4.label() }}
+        {{ form.artist4() }}
+    </p>
+     <p>
+        {{ form.artist5.label() }}
+        {{ form.artist5() }}
     </p>
     <p>
         {{ form.submit() }}
