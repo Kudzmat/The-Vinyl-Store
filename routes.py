@@ -116,17 +116,32 @@ def select_album(album_name):
                            release_date=release_date, album_image=album_image, tracks=tracks)
 
 
-# this route will let a user try out a playlist
+# this route will let me add songs to my playlist
 @app.route('/try_playlist', methods=["GET", "POST"])
 def try_playlist():
-    form = PlaylistForm()
+    form = PlaylistForm()  # instantiating a new form
+    artist_list = []  # this empty list which will hold all the artists entered
 
     if form.validate_on_submit():
-        artist_names = form.artists.data  # getting the entered artists
-        artist_list = artist_names.split(',')  # getting a list of the artists entered
-        session['artist_list'] = artist_list  # saving artist list for next route
+        # getting the entered artists and appending them to the list
+        artist1 = form.artist1.data
+        artist_list.append(artist1)
 
-        return redirect(url_for('vibe_check'))  # redirect to vibe check
+        artist2 = form.artist2.data
+        artist_list.append(artist2)
+
+        artist3 = form.artist3.data
+        artist_list.append(artist3)
+
+        artist4 = form.artist4.data
+        artist_list.append(artist4)
+
+        artist5 = form.artist5.data
+        artist_list.append(artist5)
+
+        session['artist_list'] = artist_list  # saving artist list to use for next route
+
+        return redirect(url_for('vibe_check'))  # redirect to vibe check route
 
     return render_template('try_playlist.html', form=form)
 
@@ -137,17 +152,17 @@ def vibe_check():
     sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=SCOPE, client_id=CLIENT_ID, client_secret=CLIENT_SECRET,
                                                    username=SPOTIFY_USER_ID, redirect_uri=SPOTIFY_REDIRECT_URI))
 
-    playlist_name = 'Test'
-    playlist_id = ''
-    artists_ids = []
-    tracks = []
-    artist_list = session['artist_list']
+    playlist_name = 'Vibe Check'
+    playlist_id = '138EKhzuYuww8DKcRC69ox'
+    artists_ids = []  # the recommended artist's IDs will be added to this list
+    tracks = []  # the recommended tracks will be added to this list
+    artist_list = session['artist_list']  # calling the artist list from the previous route
 
     # getting the playlist we want to add the songs to
     playlists = sp.user_playlists(user=SPOTIFY_USER_ID)  # all playlists
     for item in playlists['items']:
-        if item['name'] == playlist_name:
-            playlist_id = item['id']
+        print(item['name'])
+        print(item['id'])
 
     # putting artist ids in a list
     for artist in artist_list:
@@ -156,11 +171,13 @@ def vibe_check():
         artist_id = artist_info['id']
         artists_ids.append(artist_id)
 
-    result = sp.recommendations(seed_artists=artists_ids, limit=5, country='US')  # getting 5 song recommendation
+    # getting 5 song recommendation and appending them to the tracks list
+    result = sp.recommendations(seed_artists=artists_ids, limit=5, country='US')
     for item in result['tracks']:
-        print(item['uri'])  # getting track uris
         tracks.append(item['uri'])  # track['uri']
 
-    sp.playlist_add_items(playlist_id=playlist_id, items=[song for song in tracks])  # adding songs
+    sp.playlist_add_items(playlist_id=playlist_id, items=[song for song in tracks]) # adding songs
 
-    return "CHECK SPOTIFY!!!"
+
+    return redirect('https://open.spotify.com/playlist/138EKhzuYuww8DKcRC69ox')  # takes you to playlist page
+
